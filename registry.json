@@ -257,9 +257,47 @@
           "isLatest": true
         }
       }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.npmjs/chrome-devtools-mcp",
+        "title": "Chrome DevTools MCP",
+        "description": "Chrome DevTools MCP server for browser debugging, inspection, and automation",
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "chrome-devtools-mcp",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "npx",
+            "packageArguments": [
+              {
+                "type": "named",
+                "name": "--autoConnect",
+                "value": ""
+              },
+              {
+                "type": "named",
+                "name": "--channel",
+                "value": "beta"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
     }
   ],
   "metadata": {
-    "count": 8
+    "count": 9
   }
 }
