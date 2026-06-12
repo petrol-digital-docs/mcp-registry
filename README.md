@@ -28,6 +28,6 @@ This registry file (`registry.json`) follows the [MCP Registry v0 `ServerListRes
 ## Notes
 
 - `calva-backseat-driver` connects over a TCP socket (`localhost:1664`). The MCP registry spec has no native socket transport type; this entry carries name/metadata only — configure the socket connection in your local `mcp.json`.
-- `com.petrol/gdm-mcp` is an internal server (`bb server` in `/home/ssitje/workspace/gdm/gdm-sap/mcp`); the `internal` registryType signals it is not downloadable from a public registry.
-- `com.petrol/postgres-mcp` passes the `DATABASE_URI` environment variable to the container. The default URI used internally is `postgresql://@cic:5432/gdm`.
+- `com.petrol/gdm-mcp` is an internal server; the `internal` registryType signals it is not downloadable from a public registry.
+- `com.petrol/postgres-mcp` passes the `DATABASE_URI` environment variable to the container at runtime.
 
