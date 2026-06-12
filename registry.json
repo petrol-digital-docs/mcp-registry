@@ -1,0 +1,265 @@
+{
+  "servers": [
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.petrol/postgres-mcp",
+        "title": "PostgreSQL MCP",
+        "description": "PostgreSQL database introspection and query MCP server via crystaldba/postgres-mcp",
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "crystaldba/postgres-mcp",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "docker",
+            "environmentVariables": [
+              {
+                "name": "DATABASE_URI",
+                "description": "PostgreSQL connection URI (e.g. postgresql://user@host:5432/dbname)",
+                "isRequired": true,
+                "isSecret": true
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.atlassian/mcp",
+        "title": "Atlassian MCP",
+        "description": "Atlassian cloud MCP server providing access to Jira, Confluence, and other Atlassian products",
+        "version": "1.0.0",
+        "websiteUrl": "https://mcp.atlassian.com",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.atlassian.com/v1/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.petrol/gdm-mcp",
+        "title": "GDM SAP MCP",
+        "description": "Internal GDM SAP MCP server for Petrol, run via Babashka",
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "internal",
+            "identifier": "gdm-sap-mcp",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "bb"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.github.BetterThanTomorrow/calva-backseat-driver",
+        "title": "Calva Backseat Driver",
+        "description": "Calva MCP server providing Clojure and ClojureScript development assistance via socket connection",
+        "version": "1.0.0",
+        "repository": {
+          "url": "https://github.com/BetterThanTomorrow/calva",
+          "source": "github"
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.github.microsoft/playwright-mcp",
+        "title": "Playwright MCP",
+        "description": "Playwright MCP server for browser automation and end-to-end testing",
+        "version": "0.0.1-seed",
+        "repository": {
+          "url": "https://github.com/microsoft/playwright-mcp",
+          "source": "github"
+        },
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@playwright/mcp",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "npx"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.github.vercel/next-devtools-mcp",
+        "title": "Next.js DevTools MCP",
+        "description": "Next.js development tools MCP server providing enhanced developer experience",
+        "version": "0.3.6",
+        "repository": {
+          "url": "https://github.com/vercel/next-devtools",
+          "source": "github"
+        },
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "next-devtools-mcp",
+            "version": "0.3.6",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "npx"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.github.SonarSource/sonarqube-mcp-server",
+        "title": "SonarQube MCP Server",
+        "description": "SonarQube MCP server for code quality, security analysis, and technical debt management",
+        "version": "1.7.0",
+        "repository": {
+          "url": "https://github.com/SonarSource/sonarqube-mcp-server",
+          "source": "github"
+        },
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/mcp/sonarqube",
+            "version": "1.7.0",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "docker",
+            "environmentVariables": [
+              {
+                "name": "SONARQUBE_TOKEN",
+                "description": "SonarQube authentication token",
+                "isRequired": true,
+                "isSecret": true
+              },
+              {
+                "name": "SONARQUBE_ORG",
+                "description": "SonarQube organization key",
+                "isRequired": true,
+                "isSecret": false
+              },
+              {
+                "name": "SONARQUBE_URL",
+                "description": "SonarQube server URL",
+                "isRequired": true,
+                "isSecret": false
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.github.upstash/context7",
+        "title": "Context7",
+        "description": "Context7 MCP server providing up-to-date library documentation and code examples for AI agents",
+        "version": "1.0.31",
+        "repository": {
+          "url": "https://github.com/upstash/context7",
+          "source": "github"
+        },
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@upstash/context7-mcp",
+            "version": "1.0.31",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "npx",
+            "environmentVariables": [
+              {
+                "name": "CONTEXT7_API_KEY",
+                "description": "Context7 API key for authentication",
+                "isRequired": true,
+                "isSecret": true
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-06-12T00:00:00Z",
+          "publishedAt": "2026-06-12T00:00:00Z",
+          "updatedAt": "2026-06-12T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "count": 8
+  }
+}
