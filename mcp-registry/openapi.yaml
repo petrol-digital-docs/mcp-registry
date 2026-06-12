@@ -1,0 +1,331 @@
+openapi: 3.1.0
+info:
+  title: Petrol MCP Registry
+  description: >
+    Specification-compliant MCP Registry (v0.1) serving Petrol's approved
+    Model Context Protocol servers to GitHub Copilot Enterprise.
+  version: "1.0.0"
+  contact:
+    name: Petrol Digital Docs
+    url: https://github.com/petrol-digital-docs/mcp-registry
+
+servers:
+  - url: https://mcp-registry.preseznik.workers.dev
+    description: Cloudflare Worker (production)
+
+paths:
+  /:
+    get:
+      operationId: getRoot
+      summary: Registry info
+      description: Returns a description of available endpoints.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RootResponse"
+
+  /v0.1/health:
+    get:
+      operationId: getHealth
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+
+  /v0.1/servers:
+    get:
+      operationId: listServers
+      summary: List latest server versions
+      description: >
+        Returns one entry per server name, representing the latest version.
+        Compatible with the MCP Registry v0.1 ServerListResponse format.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerListResponse"
+
+  /v0.1/servers/{serverName}/versions:
+    get:
+      operationId: listServerVersions
+      summary: List all versions of a server
+      parameters:
+        - $ref: "#/components/parameters/serverName"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v0.1/servers/{serverName}/versions/latest:
+    get:
+      operationId: getLatestServerVersion
+      summary: Get the latest version of a server
+      parameters:
+        - $ref: "#/components/parameters/serverName"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerEntry"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v0.1/servers/{serverName}/versions/{version}:
+    get:
+      operationId: getServerVersion
+      summary: Get a specific version of a server
+      parameters:
+        - $ref: "#/components/parameters/serverName"
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "1.0.0"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerEntry"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+  parameters:
+    serverName:
+      name: serverName
+      in: path
+      required: true
+      description: >
+        Server name in reverse-DNS format, e.g. `io.github.microsoft/playwright-mcp`.
+        Must be URL-encoded.
+      schema:
+        type: string
+      example: io.github.microsoft%2Fplaywright-mcp
+
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+  schemas:
+    RootResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        registryBaseUrl:
+          type: string
+          format: uri
+        endpoints:
+          type: array
+          items:
+            type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+
+    ServerListResponse:
+      type: object
+      required: [servers, metadata]
+      properties:
+        servers:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServerEntry"
+        metadata:
+          type: object
+          required: [count]
+          properties:
+            count:
+              type: integer
+            nextCursor:
+              type: string
+              nullable: true
+
+    ServerEntry:
+      type: object
+      required: [server, _meta]
+      properties:
+        server:
+          $ref: "#/components/schemas/ServerDetail"
+        _meta:
+          $ref: "#/components/schemas/ServerMeta"
+
+    ServerDetail:
+      type: object
+      required: [name, description, version]
+      properties:
+        $schema:
+          type: string
+          format: uri
+        name:
+          type: string
+          description: Server name in reverse-DNS format (namespace/server-name)
+          example: io.github.microsoft/playwright-mcp
+        title:
+          type: string
+          example: Playwright MCP
+        description:
+          type: string
+          maxLength: 100
+        version:
+          type: string
+          example: "1.0.0"
+        websiteUrl:
+          type: string
+          format: uri
+        repository:
+          $ref: "#/components/schemas/Repository"
+        packages:
+          type: array
+          items:
+            $ref: "#/components/schemas/Package"
+        remotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/RemoteTransport"
+
+    Repository:
+      type: object
+      required: [url, source]
+      properties:
+        url:
+          type: string
+          format: uri
+        source:
+          type: string
+          example: github
+        subfolder:
+          type: string
+
+    Package:
+      type: object
+      required: [registryType, identifier, transport]
+      properties:
+        registryType:
+          type: string
+          example: npm
+        identifier:
+          type: string
+          example: "@playwright/mcp"
+        version:
+          type: string
+        runtimeHint:
+          type: string
+          example: npx
+        transport:
+          $ref: "#/components/schemas/LocalTransport"
+        environmentVariables:
+          type: array
+          items:
+            $ref: "#/components/schemas/KeyValueInput"
+        packageArguments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Argument"
+
+    LocalTransport:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [stdio, streamable-http, sse]
+        url:
+          type: string
+          format: uri
+
+    RemoteTransport:
+      type: object
+      required: [type, url]
+      properties:
+        type:
+          type: string
+          enum: [streamable-http, sse]
+        url:
+          type: string
+          format: uri
+        headers:
+          type: array
+          items:
+            $ref: "#/components/schemas/KeyValueInput"
+
+    KeyValueInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isRequired:
+          type: boolean
+          default: false
+        isSecret:
+          type: boolean
+          default: false
+        value:
+          type: string
+
+    Argument:
+      type: object
+      required: [type, name]
+      properties:
+        type:
+          type: string
+          enum: [named, positional]
+        name:
+          type: string
+        value:
+          type: string
+
+    ServerMeta:
+      type: object
+      properties:
+        io.modelcontextprotocol.registry/official:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [active, deprecated, deleted]
+              default: active
+            isLatest:
+              type: boolean
+            statusChangedAt:
+              type: string
+              format: date-time
+            publishedAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
