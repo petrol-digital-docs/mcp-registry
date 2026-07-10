@@ -1,0 +1,13 @@
+{
+  "name": "petrol-mcp-registry",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serves the Petrol registry.json over the MCP v0.1 registry HTTP API with CORS.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
