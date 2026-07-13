@@ -15,6 +15,28 @@
           "type": "stdio"
         },
         "runtimeHint": "podman",
+        "runtimeArguments": [
+          {
+            "type": "named",
+            "name": "-i"
+          },
+          {
+            "type": "named",
+            "name": "--rm"
+          },
+          {
+            "type": "named",
+            "name": "-e",
+            "value": "ES_URL=https://elasticsearcht.petrol.si:443",
+            "isRepeated": true
+          },
+          {
+            "type": "named",
+            "name": "-e",
+            "value": "ES_API_KEY",
+            "isRepeated": true
+          }
+        ],
         "packageArguments": [
           {
             "type": "positional",
@@ -22,13 +44,6 @@
           }
         ],
         "environmentVariables": [
-          {
-            "name": "ES_URL",
-            "description": "Petrol Elasticsearch endpoint",
-            "isRequired": true,
-            "isSecret": false,
-            "value": "https://elasticsearcht.petrol.si:443"
-          },
           {
             "name": "ES_API_KEY",
             "description": "Elasticsearch API key",
