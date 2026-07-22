@@ -413,9 +413,33 @@
           "isLatest": true
         }
       }
+    },
+	{
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.jetbrains/idea",
+        "title": "IntelliJ IDEA MCP",
+        "description": "Local IntelliJ IDEA MCP server",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "http://127.0.0.1:64527/stream"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-07-22T00:00:00Z",
+          "publishedAt": "2026-07-22T00:00:00Z",
+          "updatedAt": "2026-07-22T00:00:00Z",
+          "isLatest": true
+        }
+      }
     }
   ],
   "metadata": {
-    "count": 12
+    "count": 13
   }
 }
