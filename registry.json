@@ -1,69 +1,69 @@
 {
   "servers": [
     {
-  "server": {
-    "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-    "name": "com.petrol/elasticsearch-mcp",
-    "title": "Elasticsearch MCP",
-    "description": "MCP server for querying and inspecting Petrol Elasticsearch",
-    "version": "1.0.0",
-    "packages": [
-      {
-        "registryType": "oci",
-        "identifier": "docker.elastic.co/mcp/elasticsearch",
-        "transport": {
-          "type": "stdio"
-        },
-        "runtimeHint": "podman",
-        "runtimeArguments": [
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.petrol/elasticsearch-mcp",
+        "title": "Elasticsearch MCP",
+        "description": "MCP server for querying and inspecting Petrol Elasticsearch",
+        "version": "1.0.0",
+        "packages": [
           {
-            "type": "named",
-            "name": "-i"
-          },
-          {
-            "type": "named",
-            "name": "--rm"
-          },
-          {
-            "type": "named",
-            "name": "-e",
-            "value": "ES_URL=https://elasticsearcht.petrol.si:443",
-            "isRepeated": true
-          },
-          {
-            "type": "named",
-            "name": "-e",
-            "value": "ES_API_KEY",
-            "isRepeated": true
-          }
-        ],
-        "packageArguments": [
-          {
-            "type": "positional",
-            "value": "stdio"
-          }
-        ],
-        "environmentVariables": [
-          {
-            "name": "ES_API_KEY",
-            "description": "Elasticsearch API key",
-            "isRequired": true,
-            "isSecret": true
+            "registryType": "oci",
+            "identifier": "docker.elastic.co/mcp/elasticsearch",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeHint": "podman",
+            "runtimeArguments": [
+              {
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "type": "named",
+                "name": "-e",
+                "value": "ES_URL=https://elasticsearcht.petrol.si:443",
+                "isRepeated": true
+              },
+              {
+                "type": "named",
+                "name": "-e",
+                "value": "ES_API_KEY",
+                "isRepeated": true
+              }
+            ],
+            "packageArguments": [
+              {
+                "type": "positional",
+                "value": "stdio"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "name": "ES_API_KEY",
+                "description": "Elasticsearch API key",
+                "isRequired": true,
+                "isSecret": true
+              }
+            ]
           }
         ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-07-10T00:00:00Z",
+          "publishedAt": "2026-07-10T00:00:00Z",
+          "updatedAt": "2026-07-10T00:00:00Z",
+          "isLatest": true
+        }
       }
-    ]
-  },
-  "_meta": {
-    "io.modelcontextprotocol.registry/official": {
-      "status": "active",
-      "statusChangedAt": "2026-07-10T00:00:00Z",
-      "publishedAt": "2026-07-10T00:00:00Z",
-      "updatedAt": "2026-07-10T00:00:00Z",
-      "isLatest": true
-    }
-  }
-},
+    },
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
@@ -414,8 +414,33 @@
         }
       }
     }
+    ,
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.jetbrains/idea",
+        "title": "IntelliJ IDEA MCP",
+        "description": "Local IntelliJ IDEA MCP server",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "http://127.0.0.1:64527/stream"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-07-22T00:00:00Z",
+          "publishedAt": "2026-07-22T00:00:00Z",
+          "updatedAt": "2026-07-22T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    }
   ],
   "metadata": {
-    "count": 12
+    "count": 13
   }
 }
