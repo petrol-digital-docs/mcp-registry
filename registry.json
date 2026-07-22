@@ -359,9 +359,63 @@
           "isLatest": true
         }
       }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.figma.mcp/mcp",
+        "title": "Figma MCP Server",
+        "description": "The Figma MCP server brings Figma design context directly into your AI workflow.",
+        "version": "1.0.0",
+        "websiteUrl": "https://developers.figma.com/docs/figma-mcp-server/",
+        "repository": {
+          "url": "https://github.com/figma/mcp-server-guide",
+          "source": "github"
+        },
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.figma.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-07-22T00:00:00Z",
+          "publishedAt": "2026-07-22T00:00:00Z",
+          "updatedAt": "2026-07-22T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.figma.mcp/desktop",
+        "title": "Figma Desktop MCP",
+        "description": "Figma desktop app MCP server (local); requires the Figma desktop app running in Dev Mode",
+        "version": "1.0.0",
+        "websiteUrl": "https://developers.figma.com/docs/figma-mcp-server/",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "http://127.0.0.1:3845/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-07-22T00:00:00Z",
+          "publishedAt": "2026-07-22T00:00:00Z",
+          "updatedAt": "2026-07-22T00:00:00Z",
+          "isLatest": true
+        }
+      }
     }
   ],
   "metadata": {
-    "count": 10
+    "count": 12
   }
 }
