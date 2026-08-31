@@ -414,18 +414,38 @@
         }
       }
     },
-	"intellij-idea-2026.2": {
-      "type": "sse",
-      "url": "http://127.0.0.1:64559/sse",
-      "x-metadata": {
-        "plugin": {
-          "id": "com.github.copilot",
-          "name": "GitHub Copilot",
-          "publisher": "GitHub",
-          "description": "JetBrains IDE built-in MCP server providing IDE tools (file operations, search, refactoring, debugging, VCS, etc.)"
-        }
+	{
+  "server": {
+    "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+    "name": "com.jetbrains/idea",
+    "title": "IntelliJ IDEA MCP",
+    "description": "JetBrains IDE built-in MCP server providing IDE tools (file operations, search, refactoring, debugging, VCS, etc.)",
+    "version": "1.0.0",
+    "remotes": [
+      {
+        "type": "sse",
+        "url": "http://127.0.0.1:64559/sse"
+      }
+    ],
+    "x-metadata": {
+      "plugin": {
+        "id": "com.github.copilot",
+        "name": "GitHub Copilot",
+        "publisher": "GitHub",
+        "description": "JetBrains IDE built-in MCP server providing IDE tools (file operations, search, refactoring, debugging, VCS, etc.)"
       }
     }
+  },
+  "_meta": {
+    "io.modelcontextprotocol.registry/official": {
+      "status": "active",
+      "statusChangedAt": "2026-07-22T00:00:00Z",
+      "publishedAt": "2026-07-22T00:00:00Z",
+      "updatedAt": "2026-07-22T00:00:00Z",
+      "isLatest": true
+    }
+  }
+}
   ],
   "metadata": {
     "count": 13
