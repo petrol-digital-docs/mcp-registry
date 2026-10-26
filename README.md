@@ -44,6 +44,7 @@ Use the service **root** — GitHub appends `/v0.1/...` automatically. Do **not*
 | `io.github.SonarSource/sonarqube-mcp-server` | stdio | OCI `docker.io/mcp/sonarqube` (docker) | 1.7.0 |
 | `io.github.upstash/context7` | stdio | npm `@upstash/context7-mcp` (npx) | 1.0.31 |
 | `io.npmjs/chrome-devtools-mcp` | stdio | npm `chrome-devtools-mcp` (npx) | 1.0.0 |
+| `com.petrol/mcp-forge` | streamable-http (remote) | `https://mcp.petrol.si/mcp` | 1.0.0 |
 
 ## Repository layout
 
