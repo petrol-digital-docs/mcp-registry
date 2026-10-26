@@ -503,7 +503,7 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-        "name": "com.petrol/mcp-forge",
+        "name": "si.petrol/mcp-forge",
         "title": "mcp-forge",
         "description": "Petrol's MCP gateway: DB2, SAP, data-models and more behind one URL and one Entra login",
         "version": "1.0.0",
