@@ -445,9 +445,63 @@
       "isLatest": true
     }
   }
-}
+  },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "io.github.github/github-mcp-server",
+        "title": "GitHub MCP Server",
+        "description": "GitHub MCP server for interacting with GitHub repositories, issues, pull requests, and more",
+        "version": "1.0.0",
+        "repository": {
+          "url": "https://github.com/github/github-mcp-server",
+          "source": "github"
+        },
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/github/github-mcp-server",
+            "transport": { "type": "stdio" },
+            "runtimeHint": "podman",
+            "runtimeArguments": [
+              { "type": "named", "name": "-i" },
+              { "type": "named", "name": "--rm" },
+              {
+                "type": "named",
+                "name": "-e",
+                "value": "GITHUB_PERSONAL_ACCESS_TOKEN",
+                "isRepeated": true
+              },
+              {
+                "type": "named",
+                "name": "-e",
+                "value": "GITHUB_HOST=https://github285.petrol.si",
+                "isRepeated": true
+              }
+            ],
+            "environmentVariables": [
+              {
+                "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
+                "description": "GitHub personal access token",
+                "isRequired": true,
+                "isSecret": true
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "statusChangedAt": "2026-10-21T00:00:00Z",
+          "publishedAt": "2026-10-21T00:00:00Z",
+          "updatedAt": "2026-10-21T00:00:00Z",
+          "isLatest": true
+        }
+      }
+    }
   ],
   "metadata": {
-    "count": 13
+    "count": 14
   }
 }
