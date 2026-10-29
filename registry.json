@@ -503,11 +503,18 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-        "name": "si.petrol/mcp-forge",
-        "title": "mcp-forge",
-        "description": "Petrol's MCP gateway: DB2, SAP, data-models and more behind one URL and one Entra login",
+        "name": "si.petrol/airesource",
+        "title": "Petrol AI Resource",
+        "description": "Petrol's personal MCP forge: DB2, SAP, Jira, Microsoft 365 and docs behind one Entra login",
         "version": "1.0.0",
-        "websiteUrl": "https://mcp.petrol.si/",
+        "websiteUrl": "https://mcp.petrol.si",
+        "icons": [
+          {
+            "src": "https://mcp.petrol.si/img/clojure.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": ["any"]
+          }
+        ],
         "remotes": [
           {
             "type": "streamable-http",
@@ -520,7 +527,7 @@
           "status": "active",
           "statusChangedAt": "2026-10-26T00:00:00Z",
           "publishedAt": "2026-10-26T00:00:00Z",
-          "updatedAt": "2026-10-26T00:00:00Z",
+          "updatedAt": "2026-10-29T00:00:00Z",
           "isLatest": true
         }
       }
