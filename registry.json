@@ -108,8 +108,8 @@
         "websiteUrl": "https://mcp.atlassian.com",
         "remotes": [
           {
-            "type": "sse",
-            "url": "https://mcp.atlassian.com/v1/sse"
+            "type": "streamable-http",
+            "url": "https://mcp.atlassian.com/v2/mcp"
           }
         ]
       },
